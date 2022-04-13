@@ -1,0 +1,1697 @@
+2022-04-01 16:13:04.217 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 16:13:04.274 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 16:13:04.923 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 16:13:05.555 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 16:13:05.559 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 16:13:05.624 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 16:13:05.670 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 11 "CREATE TABLE db_version(version INTEGER) ;" null
+2022-04-01 16:13:05.679 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 7 "insert into db_version (version) values(1);" null
+2022-04-01 16:13:05.698 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 8 "CREATE TABLE app_settings(key text primary key asc, value text, created_ts datetime default current_timestamp, updated_ts datetime default current_timestamp);" null
+2022-04-01 16:13:05.708 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 6 "update db_version set version=2;" null
+2022-04-01 16:13:05.718 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 7 "CREATE TABLE titles(title_id integer not null primary key asc, title_json text not null);" null
+2022-04-01 16:13:05.728 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 7 "update db_version set version=3;" null
+2022-04-01 16:13:05.738 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 7 "CREATE TABLE playlists(playlist_id integer not null primary key asc, playlist_json text not null);" null
+2022-04-01 16:13:05.748 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 8 "update db_version set version=4;" null
+2022-04-01 16:13:05.759 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 8 "CREATE TABLE app_settings2(key text primary key asc, value text, created_ts datetime default current_timestamp, updated_ts datetime default current_timestamp);" null
+2022-04-01 16:13:05.769 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 7 "update db_version set version=5;" null
+2022-04-01 16:13:05.781 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 9 "CREATE TABLE playlist_titles(id_playlist integer not null, id_title integer not null, position integer not null);" null
+2022-04-01 16:13:05.791 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 8 "update db_version set version=6;" null
+2022-04-01 16:13:05.803 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 9 "CREATE TABLE app_data(key text primary key asc, value text, created_ts datetime default current_timestamp, updated_ts datetime default current_timestamp);" null
+2022-04-01 16:13:05.814 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 8 "update db_version set version=7;" null
+2022-04-01 16:13:05.826 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 16:13:05.840 -04:00 [DBG] [B8F5C0F9] DBProviderMetricsDecorator Write 9 "CREATE TABLE volume_metrics_v1(dt datetime, id text, device_name text, channel int, value float);" null
+2022-04-01 16:13:05.844 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 16:13:06.088 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 16:35:40.059 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 16:35:40.113 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 16:35:40.654 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 16:35:41.303 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 16:35:41.307 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 16:35:41.391 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 16:35:41.428 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 16:35:41.432 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 16:35:41.607 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 16:43:11.610 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 16:43:11.666 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 16:43:12.247 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 16:43:12.924 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 16:43:12.928 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 16:43:13.018 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 16:43:13.056 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 16:43:13.061 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 16:43:13.229 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 16:57:51.385 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 16:57:51.437 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 16:57:51.953 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 16:57:52.627 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 16:57:52.632 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 16:57:52.708 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 16:57:52.745 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 16:57:52.750 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 16:57:52.920 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 16:59:39.892 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 16:59:39.959 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 16:59:40.790 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 16:59:41.460 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 16:59:41.464 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 16:59:41.537 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 16:59:41.575 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 16:59:41.580 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 16:59:41.751 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:27:34.931 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:27:34.997 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:27:35.698 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:27:36.398 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:27:36.403 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:27:36.480 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:27:36.520 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:27:36.525 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:27:36.701 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:32:14.772 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:32:14.832 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:32:15.449 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:32:16.185 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:32:16.190 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:32:16.270 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:32:16.313 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:32:16.318 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:32:16.487 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:33:06.966 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:33:07.016 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:33:07.521 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:33:08.125 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:33:08.130 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:33:08.193 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:33:08.231 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:33:08.236 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:33:08.396 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:33:20.172 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:33:20.228 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:33:20.801 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:33:21.422 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:33:21.427 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:33:21.488 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:33:21.529 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:33:21.534 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:33:21.683 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:33:36.555 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:33:36.608 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:33:37.112 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:33:37.712 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:33:37.717 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:33:37.776 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:33:37.816 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:33:37.820 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:33:37.974 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:33:43.664 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:33:43.718 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:33:44.217 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:33:44.824 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:33:44.828 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:33:44.896 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:33:44.932 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:33:44.936 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:33:45.090 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:36:17.091 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:36:17.149 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:36:17.658 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:36:18.273 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:36:18.277 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:36:18.346 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:36:18.386 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:36:18.390 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:36:18.558 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:37:00.847 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:37:00.901 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:37:01.407 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:37:02.025 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:37:02.030 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:37:02.089 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:37:02.130 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:37:02.134 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:37:02.285 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:37:53.063 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:37:53.118 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:37:53.618 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:37:54.233 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:37:54.238 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:37:54.300 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:37:54.343 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:37:54.349 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:37:54.503 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:38:00.711 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:38:00.769 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:38:01.275 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:38:01.899 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:38:01.904 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:38:01.966 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:38:02.004 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:38:02.008 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:38:02.166 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:41:41.581 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:41:41.629 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:41:42.145 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:41:42.783 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:41:42.785 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:41:42.843 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:41:42.880 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:41:42.883 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:41:43.041 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:42:32.638 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:42:32.690 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:42:33.195 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:42:33.858 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:42:33.860 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:42:33.920 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:42:33.956 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:42:33.959 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:42:34.136 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:43:01.158 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:43:01.208 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:43:01.714 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:43:02.330 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:43:02.334 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:43:02.403 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:43:02.441 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:43:02.446 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:43:02.608 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:43:21.657 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:43:21.712 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:43:22.216 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:43:22.834 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:43:22.839 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:43:22.901 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:43:22.939 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:43:22.945 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:43:23.099 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:44:16.137 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:44:16.202 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:44:16.819 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:44:17.500 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:44:17.504 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:44:17.571 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:44:17.611 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:44:17.614 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:44:17.775 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:44:36.695 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:44:36.756 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:44:37.338 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:44:38.043 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:44:38.047 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:44:38.118 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:44:38.159 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:44:38.163 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:44:38.324 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:44:59.678 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:44:59.742 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:45:00.335 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:45:01.058 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:45:01.063 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:45:01.135 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:45:01.184 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:45:01.189 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:45:01.351 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:47:46.518 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:47:46.585 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:47:47.181 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:47:47.854 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:47:47.859 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:47:47.926 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:47:47.966 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:47:47.970 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:47:48.146 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:51:13.969 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:51:14.024 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:51:14.537 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:51:15.142 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:51:15.147 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:51:15.214 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:51:15.253 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:51:15.257 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:51:15.414 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:51:23.153 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:51:23.205 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:51:23.759 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:51:24.411 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:51:24.414 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:51:24.476 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:51:24.516 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:51:24.520 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:51:24.672 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:51:46.614 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:51:46.675 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:51:47.290 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:51:48.001 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:51:48.007 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:51:48.082 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:51:48.124 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:51:48.132 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:51:48.288 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:51:59.088 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:51:59.150 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:51:59.796 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:52:00.413 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:52:00.418 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:52:00.481 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:52:00.517 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:52:00.522 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:52:00.676 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:52:35.133 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:52:35.193 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:52:35.835 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:52:36.457 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:52:36.462 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:52:36.530 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:52:36.569 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:52:36.573 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:52:36.736 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
+2022-04-01 17:53:04.727 -04:00 [INF] [CA18B580] Program Starting version: "22.3.26.464"
+2022-04-01 17:53:04.804 -04:00 [INF] [9D7705AC] Program Args ""
+2022-04-01 17:53:05.598 -04:00 [INF] [B6A9DA19] Program Starting...
+2022-04-01 17:53:06.273 -04:00 [DBG] [5C76E146] AppInitializer Starting
+2022-04-01 17:53:06.278 -04:00 [DBG] [DBAA4716] AppInitializer Init database
+2022-04-01 17:53:06.354 -04:00 [DBG] [4660AB9A] DataDbSchemaUpdator UpgradeSchema
+2022-04-01 17:53:06.393 -04:00 [DBG] [4660AB9A] MetricsStore UpgradeSchema
+2022-04-01 17:53:06.397 -04:00 [DBG] [AFBA637E] AppInitializer Init player
+2022-04-01 17:53:06.579 -04:00 [FTL] [CDB2AAC2] Program Host terminated unexpectedly
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.Data.OleDb.OleDbException (0x80004005): 'C:\Users\amir.zarafshan\Source\Repos\SetupV6Helper\SetupV6Helper\pcmclient\pcmclient.mdb' is not a valid path.  Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
+   at System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   at System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.OleDb.OleDbConnection.Open()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider.OpenConnectionSync()
+   at RXMusic.Engine.V4.Infra.Database.MSAccessDBProvider..ctor(String connString)
+   at RXMusic.Engine.V4.Infra.Database.V4DBProviderService.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.Diagnostics.Database.DBProviderMetrics.GetDBProvider(DatabaseProviderType provider)
+   at RXMusic.Engine.V4.Stores.V4ConfigStore..ctor(IDBProviderService dbProviderService)
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.QuickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass18_0.<quickResolve>b__0(CtorArg x)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Lamar.IoC.Instances.ConstructorInstance.quickResolve(Scope scope)
+   at Lamar.IoC.Instances.ConstructorInstance.<>c__DisplayClass15_0.<ToResolver>b__0(Scope s)
+   at Lamar.ServiceGraph.<>c__DisplayClass48_0.<FindResolver>b__0(Scope s)
+   at Lamar.IoC.Scope.GetInstance(Type serviceType)
+   at Lamar.Container.Microsoft.Extensions.DependencyInjection.ISupportRequiredService.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RXMusic.Engine.Core.AppInitializer.InitPlayer()
+   at RXMusic.Engine.Core.AppInitializer.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at RXMusic.Engine.App.Program.Main(String[] args)
