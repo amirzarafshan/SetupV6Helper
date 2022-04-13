@@ -1,2 +1,2 @@
-# SetupV6Helper
+# Scripts
 Reporsitory for scripts
