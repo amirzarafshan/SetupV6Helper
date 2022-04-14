@@ -9,7 +9,8 @@ namespace SetupV6Helper.Models
 {
     public sealed class TaskSchedulerInfo
     {
-        private static readonly string RXM_HELPER = "RXM Helper";
+        private static readonly string RXM_HELPER_SCH_TASKS = "RXM Helper";
+
         public string Name { get; set; }
 
         public TaskSchedulerInfo(string name)
@@ -46,7 +47,7 @@ namespace SetupV6Helper.Models
                 tasks.Add(new TaskSchedulerInfo(ts.Name));
             }
 
-            return tasks.Where(p => p.Name.StartsWith(RXM_HELPER)).ToList();
+            return tasks.Where(p => p.Name.StartsWith(RXM_HELPER_SCH_TASKS)).ToList();
         }
     }
 }
