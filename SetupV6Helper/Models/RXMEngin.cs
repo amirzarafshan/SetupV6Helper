@@ -13,23 +13,10 @@ namespace SetupV6Helper
         public string CurrentVersion { get; set; }
         public string MD5Hash_CurrentVersion { get; set; }
 
-        public static bool IsUrlExist(string url)
+        public RXMEngin(string current_version, string md5hash_currentversion)
         {
-            bool result = true;
-            WebRequest request = WebRequest.Create(url);
-            request.Timeout = 1200;
-            request.Method = "HEAD";
-
-            try
-            {
-                request.GetResponse();
-            }
-            catch
-            {
-                result = false;
-                Environment.Exit(0);
-            }
-            return result;
-        } 
+            CurrentVersion = current_version;
+            MD5Hash_CurrentVersion = md5hash_currentversion;
+        }
     }
 }

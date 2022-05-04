@@ -90,12 +90,12 @@ namespace SetupV6Helper
 
         private static string V6EnginCurrentVersion()
         {
-            return RXMEnginInfo.CurrentVersion;
+            return RXMEnginInfo.GetInfo().CurrentVersion;
         }
 
-        private static string MD5hashRemoteDistFile(string version)
+        private static string MD5hashRemoteDistFile()
         {
-            return RXMEnginInfo.MD5Hash_CurrentVersion;
+            return RXMEnginInfo.GetInfo().MD5Hash_CurrentVersion;
         }
 
         private static string V6EnginCurrentVersionURI()
@@ -107,7 +107,7 @@ namespace SetupV6Helper
         {
             string local_downloaded_file = ReadFileNamePathLocally(filename);
 
-            if (FileExtractor.CalculateMD5(local_downloaded_file).Equals(MD5hashRemoteDistFile(V6EnginCurrentVersion())))
+            if (FileExtractor.CalculateMD5(local_downloaded_file).Equals(MD5hashRemoteDistFile()))
             {
                 return true;
             }

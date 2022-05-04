@@ -14,12 +14,6 @@ namespace SetupV6Helper
         public static string CurrentVersion { get; set; }
         public static string MD5Hash_CurrentVersion { get; set; }
 
-        public RXMEnginInfo(string current_version, string md5hash_current_version)
-        {
-            CurrentVersion = current_version;
-            MD5Hash_CurrentVersion = md5hash_current_version;
-        }
-
         public static string ReadV6MacroVersion()
         {
             try
@@ -78,12 +72,12 @@ namespace SetupV6Helper
             }       
         }
 
-        public static RXMEnginInfo RXMEngineDistFileinfo(string version)
+        public static RXMEngin GetInfo()
         {
-            return new RXMEnginInfo
+            return new RXMEngin
             (
-                CurrentVersion = ReadV6MacroVersion().ToString(),
-                MD5Hash_CurrentVersion = ReadMD5hashRemoteDistFile(version).ToString()
+                CurrentVersion = ReadV6MacroVersion(),
+                MD5Hash_CurrentVersion = ReadMD5hashRemoteDistFile(CurrentVersion)
             );
         }
     }
