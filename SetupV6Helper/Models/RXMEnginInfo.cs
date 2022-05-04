@@ -11,13 +11,13 @@ namespace SetupV6Helper
         private static readonly string v6_macro_version = "https://web.pcmedia.ca/apps/player/v6_macro_version.txt";
 
 
-        public string CurrentVersion { get; set; }
-        public string MD5Hash_CurrentVersion { get; set; }
+        public static string CurrentVersion { get; set; }
+        public static string MD5Hash_CurrentVersion { get; set; }
 
         public RXMEnginInfo(string current_version, string md5hash_current_version)
         {
             CurrentVersion = current_version;
-            md5hash_current_version = MD5Hash_CurrentVersion;
+            MD5Hash_CurrentVersion = md5hash_current_version;
         }
 
         public static string ReadV6MacroVersion()
@@ -76,6 +76,15 @@ namespace SetupV6Helper
                 Environment.Exit(0);
                 return null;
             }       
+        }
+
+        public static RXMEnginInfo RXMEngineDistFileinfo(string version)
+        {
+            return new RXMEnginInfo
+            (
+                CurrentVersion = ReadV6MacroVersion().ToString(),
+                MD5Hash_CurrentVersion = ReadMD5hashRemoteDistFile(version).ToString()
+            );
         }
     }
 }

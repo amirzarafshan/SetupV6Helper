@@ -14,8 +14,6 @@ namespace SetupV6Helper
         private static readonly string versions_folder_path_local = "";
         private static readonly string rxm_engine_app = "RXMusic.Engine.App.exe";
         private static readonly string file_to_unzip = "dist.zip";
-        //private static readonly string rxm_helper_monitor = "RXM Helper Monitor";
-        //private static readonly string rxm_helper_start_up = "RXM Helper Start Up";
         private static WebClient webClient;
 
         public static void DownloadFile()
@@ -41,12 +39,6 @@ namespace SetupV6Helper
             }
 
         }
-
-       /* private static void DownloadCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            Console.WriteLine("File Downloaded.");
-        }
-        */
 
         private static void VerifyRXMTasks()
         {
@@ -74,11 +66,11 @@ namespace SetupV6Helper
             }
             else
             {
-                if (Directory.Exists(versionsfolderpath32bit + versions_folder_path_local))
+                if (Directory.Exists(versionsfolderpath32bit + version_folder))
                 {
                     Directory.Delete(versionsfolderpath32bit + version_folder, true);
                 }
-                Directory.CreateDirectory(versionsfolderpath32bit + versions_folder_path_local);
+                Directory.CreateDirectory(versionsfolderpath32bit + version_folder);
             }
             Console.WriteLine("Directoy to download : " + ReadFileNamePathLocally(""));
         }
@@ -86,17 +78,24 @@ namespace SetupV6Helper
         private static string ReadFileNamePathLocally(string filename)
         {
             string version_folder = V6EnginCurrentVersion();
-            return Path.GetFullPath(versionsfolderpath64bit + version_folder + "/" + filename);
+            if (Environment.Is64BitOperatingSystem)
+            {
+                return Path.GetFullPath(versionsfolderpath64bit + version_folder + "/" + filename);
+            }
+            else
+            {
+                return Path.GetFullPath(versionsfolderpath32bit + version_folder + "/" + filename);
+            }
         }
 
         private static string V6EnginCurrentVersion()
         {
-            return RXMEnginInfo.ReadV6MacroVersion();
+            return RXMEnginInfo.CurrentVersion;
         }
 
         private static string MD5hashRemoteDistFile(string version)
         {
-            return RXMEnginInfo.ReadMD5hashRemoteDistFile(version);
+            return RXMEnginInfo.MD5Hash_CurrentVersion;
         }
 
         private static string V6EnginCurrentVersionURI()
