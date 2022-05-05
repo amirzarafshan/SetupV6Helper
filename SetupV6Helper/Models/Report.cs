@@ -73,7 +73,7 @@ namespace SetupV6Helper.Models
             {
                 if (!File.Exists(v4playerfolderpath32bit + reportname))
                 {
-                    File.CreateText(v4playerfolderpath64bit + reportname).Dispose();
+                    File.CreateText(v4playerfolderpath32bit + reportname).Dispose();
                     using (TextWriter tw = new StreamWriter(v4playerfolderpath32bit + reportname))
                     {
                         tw.Write(status);
