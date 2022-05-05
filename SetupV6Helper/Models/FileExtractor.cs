@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SetupV6Helper.Models;
+using System;
 using System.IO;
 using System.IO.Compression;
 
@@ -8,10 +9,12 @@ namespace SetupV6Helper
     {
         public static void ExtractZipfile(string source, string destination)
         {
+            Report.Write("File Unzipping ..... ");
             Console.Write("File Unzipping ..... ");
             ZipFile.ExtractToDirectory(source, destination);
             if (!IsFileLocked("dist.zip"))
             {
+                Report.WriteLine("Unzipped");
                 Console.WriteLine("Unzipped");
             }
         }

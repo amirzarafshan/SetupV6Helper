@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\FileExtractor.cs" />
+    <Compile Include="Models\Report.cs" />
     <Compile Include="Models\TaskSchedule.cs" />
     <Compile Include="Models\TaskSchedulerInfo.cs" />
     <Compile Include="Program.cs" />
