@@ -9,15 +9,6 @@ namespace SetupV6Helper.Models
         private static readonly string v4playerfolderpath32bit = @"c:\program files\PCM\V4Player\";
         private static readonly string reportname = "report.pcmstat";
 
-        private static void CreateReportFile()
-        {
-            if (Environment.Is64BitOperatingSystem)
-                File.CreateText(v4playerfolderpath64bit + reportname);
-            else
-                File.CreateText(v4playerfolderpath64bit + reportname);
-
-        }
-
         public static void WriteLine(string status)
         {
             if (Environment.Is64BitOperatingSystem)
