@@ -11,7 +11,7 @@ namespace SetupV6Helper
         private static readonly string versionsfolderpath64bit = @"c:\program files (x86)\PCM\V4Player\versions\";
         private static readonly string versionsfolderpath32bit = @"c:\program files\PCM\V4Player\versions\";
         private static readonly string versions_folder_path_local = "";
-        private static readonly string rxm_engine_app = "RXMusic.Engine.App.exe";
+        private static readonly string rxm_engine_app = "RXMusic.Helper.App.exe";
         private static readonly string file_to_unzip = "dist.zip";
         private static WebClient webClient;
 
