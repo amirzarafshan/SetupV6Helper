@@ -9,7 +9,7 @@ namespace SetupV6Helper.Models
 {
     public sealed class TaskSchedulerInfo
     {
-        private static readonly string RXM_HELPER_SCH_TASKS = "RXM Helper";
+        private static readonly string RXM_HELPER_SCH_TASKS = "RXMHelper";
 
         public string Name { get; set; }
 
