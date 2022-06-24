@@ -8,6 +8,7 @@ Repository for all RXM scripts
 4) Verify whether both RXMHelperStartup & Monitor are setup in task scheduler
 ==============================================================================
 C:\Users\RXM\Documents\setupv6helper>setupv6helper -deva1
+
 Connecting to deva1
 Directoy to download : c:\program files (x86)\PCM\V4Player\bin\22.6.23.779\
 File Downloading ..... Downloaded
