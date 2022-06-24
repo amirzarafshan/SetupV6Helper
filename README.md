@@ -1,5 +1,6 @@
 # Scripts
 # SetupV6Helper
+#arguments -dev1 --> setupv6helper -deva1 [connects to deva1] | no argument by default connects to a1
 Repository for all RXM scripts
 1) Read v6_macro_version.txt for the current version
 2) Download the [x.x.x.x]\dist.zip to folder V4Player\versions\[x.x.x.x]
