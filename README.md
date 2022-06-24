@@ -9,9 +9,9 @@ Repository for all RXM scripts
 ==============================================================================
 C:\Users\RXM\Documents\setupv6helper>setupv6helper -deva1
 
-Connecting to deva1
-Directoy to download : c:\program files (x86)\PCM\V4Player\bin\22.6.23.779\
-File Downloading ..... Downloaded
-File Unzipping ..... Unzipped
-Starting Engine [c:\program files (x86)\PCM\V4Player\bin\22.6.23.779] ..... Started
-Setting up All RXM Helper scheduled tasks ..... Created
+1.Connecting to deva1
+2.Directoy to download : c:\program files (x86)\PCM\V4Player\bin\22.6.23.779\
+3.File Downloading ..... Downloaded
+4.File Unzipping ..... Unzipped
+5.Starting Engine [c:\program files (x86)\PCM\V4Player\bin\22.6.23.779] ..... Started
+6.Setting up All RXM Helper scheduled tasks ..... Created
