@@ -8,11 +8,13 @@ namespace SetupV6Helper
 {
     public class SetupAndStartV6Engin
     {
-        private static readonly string versionsfolderpath64bit = @"c:\program files (x86)\PCM\V4Player\versions\";
-        private static readonly string versionsfolderpath32bit = @"c:\program files\PCM\V4Player\versions\";
-        private static readonly string versions_folder_path_local = "";
+
+        private static readonly string v4playerpath64bit = @"c:\program files (x86)\PCM\V4Player\";
+        private static readonly string v4playerpath32bit = @"c:\program files\PCM\V4Player\";
+        private static readonly string downloadsfolder = @"downloads";
+        private static readonly string binfolder = @"bin\";
+
         private static readonly string rxm_engine_app = "RXMusic.Helper.App.exe";
-        private static readonly string file_to_unzip = "dist.zip";
         private static WebClient webClient;
 
         public static void DownloadFile()
@@ -23,15 +25,23 @@ namespace SetupV6Helper
                 {
 
                     string current_version_url = V6EnginCurrentVersionURI();
+                    string version_folder = V6EnginCurrentVersion();
+
                     Report.Write("File Downloading ..... ");
                     Console.Write("File Downloading ..... ");
                     //webClient.DownloadFileCompleted += DownloadCompleted;
                     //webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
-                    webClient.DownloadFile(new Uri(current_version_url), ReadFileNamePathLocally("dist.zip"));
-                    Report.WriteLine("Downloaded");
-                    Console.WriteLine("Downloaded");
+                    if (VersionNotExist(version_folder + ".zip")) 
+                    {
+                        webClient.DownloadFile(new Uri(current_version_url), ReadFileNamePathLocally(version_folder + ".zip"));
+                        Report.WriteLine("Downloaded");
+                        Console.WriteLine("Downloaded");
 
-
+                    }
+                    else
+                    {
+                        Console.WriteLine("V6Helper version {0} already downloaded.", V6EnginCurrentVersion());                 
+                    }
                 }
 
             }
@@ -65,41 +75,63 @@ namespace SetupV6Helper
         private static void CreateLocalDirectoryToDownload()
         {
             string version_folder = V6EnginCurrentVersion();
-
+            Console.WriteLine("V6Helper version to download : {0}", version_folder);
 
             if (Environment.Is64BitOperatingSystem)
             {
-                if (Directory.Exists(versionsfolderpath64bit + version_folder))
-                {
-                    Directory.Delete(versionsfolderpath64bit + version_folder, true);  
+                if (!Directory.Exists(v4playerpath64bit + downloadsfolder))
+                { 
+                    Directory.CreateDirectory(v4playerpath64bit + downloadsfolder);
                 }
-                Directory.CreateDirectory(versionsfolderpath64bit + version_folder);
             }
             else
             {
-                if (Directory.Exists(versionsfolderpath32bit + version_folder))
+                if (Directory.Exists(v4playerpath32bit + downloadsfolder ))
                 {
-                    Directory.Delete(versionsfolderpath32bit + version_folder, true);
+                    Directory.CreateDirectory(v4playerpath32bit + downloadsfolder);
                 }
-                Directory.CreateDirectory(versionsfolderpath32bit + version_folder);
+     
             }
 
             Report.WriteLine("Directoy to download : " + ReadFileNamePathLocally(""));
             Console.WriteLine("Directoy to download : " + ReadFileNamePathLocally(""));
         }
 
+        private static bool VersionNotExist(string filename)
+        {
+            if (File.Exists(v4playerpath64bit + downloadsfolder + "/" + filename))
+            {
+                return false;
+            }
+            return true;
+        }
+
         private static string ReadFileNamePathLocally(string filename)
+        {
+            if (Environment.Is64BitOperatingSystem)
+            {
+                 return Path.GetFullPath(v4playerpath64bit + downloadsfolder + "/" + filename);
+            }
+
+            else
+            {
+                 return Path.GetFullPath(v4playerpath32bit + downloadsfolder + "/" + filename);
+            }
+        }
+
+        private static string ReadPathToExtract(string filename)
         {
             string version_folder = V6EnginCurrentVersion();
             if (Environment.Is64BitOperatingSystem)
             {
-                return Path.GetFullPath(versionsfolderpath64bit + version_folder + "/" + filename);
+                return Path.GetFullPath(v4playerpath64bit + binfolder + version_folder + "/" + filename);
             }
             else
             {
-                return Path.GetFullPath(versionsfolderpath32bit + version_folder + "/" + filename);
+                return Path.GetFullPath(v4playerpath32bit + binfolder + version_folder + "/" + filename);
             }
         }
+
 
         private static string V6EnginCurrentVersion()
         {
@@ -130,23 +162,33 @@ namespace SetupV6Helper
             return false;
         }
 
-        private static void ExtractFile(string filename)
+        private static void ExtractFile()
         {
-            if (IsFileDownloaded(filename))
-                FileExtractor.ExtractZipfile(ReadFileNamePathLocally(filename), ReadFileNamePathLocally(""));
+            string version_folder= V6EnginCurrentVersion();
+            if (IsFileDownloaded(version_folder + ".zip"))
+            {
+                if (!Directory.Exists(v4playerpath64bit + binfolder + version_folder))
+                {
+                    FileExtractor.ExtractZipfile(ReadFileNamePathLocally(version_folder + ".zip"), ReadPathToExtract(""));
+                }
+                else
+                {
+                    Console.WriteLine("File Unzipping ..... V6Helper version {0} already extracted.", V6EnginCurrentVersion());
+                }
+            }
         }
 
-        private static void StartV6Engine(string enginefilename)
+        private static void StartV6Engine(string enginefilename, string server_endpoint)
         {
-            RXMEngineStarter.Start(ReadFileNamePathLocally(enginefilename));
+            RXMEngineStarter.Start(ReadPathToExtract(enginefilename), server_endpoint);
         }
 
-        public static void Run()
+        public static void Run(string server_endpoint)
         {
             CreateLocalDirectoryToDownload();
             DownloadFile();
-            ExtractFile(file_to_unzip);
-            StartV6Engine(rxm_engine_app);
+            ExtractFile();
+            StartV6Engine(rxm_engine_app, server_endpoint);
             VerifyRXMTasks();
         }
     }

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
+
 
 namespace SetupV6Helper
 {
     public sealed class RXMEngineStarter
     {
 
-        public static void Start(string filenamepath)
+        public static void Start(string filenamepath, string server_endpoint)
         {         
             string version_folder = Path.GetDirectoryName(filenamepath);
             Directory.SetCurrentDirectory(version_folder);
@@ -18,6 +18,7 @@ namespace SetupV6Helper
 
             Process proc = new Process();       
             proc.StartInfo.FileName = filenamepath;
+            proc.StartInfo.Arguments = server_endpoint;
             proc.StartInfo.UseShellExecute = true; 
             proc.StartInfo.Verb = "runas";
             proc.Start();
