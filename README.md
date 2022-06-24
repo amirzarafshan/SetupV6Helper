@@ -7,7 +7,10 @@ Repository for all RXM scripts
 3) Unzip the dist.zip file
 4) Verify whether both RXMHelperStartup & Monitor are setup in task scheduler
 ==============================================================================
-Directoy to download : c:\program files (x86)\PCM\V4Player\versions\22.6.1.660\
+C:\Users\RXM\Documents\setupv6helper>setupv6helper -deva1
+Connecting to deva1
+Directoy to download : c:\program files (x86)\PCM\V4Player\bin\22.6.23.779\
 File Downloading ..... Downloaded
 File Unzipping ..... Unzipped
+Starting Engine [c:\program files (x86)\PCM\V4Player\bin\22.6.23.779] ..... Started
 Setting up All RXM Helper scheduled tasks ..... Created
