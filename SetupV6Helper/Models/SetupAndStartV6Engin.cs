@@ -15,7 +15,7 @@ namespace SetupV6Helper
         private static readonly string binfolder = @"bin\";
 
         private static readonly string rxm_engine_app = "RXMusic.Helper.App.exe";
-        private static WebClient webClient;
+        private static WebClient webClient; 
 
         public static void DownloadFile()
         {
