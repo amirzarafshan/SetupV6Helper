@@ -86,7 +86,7 @@ namespace SetupV6Helper
             }
             else
             {
-                if (Directory.Exists(v4playerpath32bit + downloadsfolder ))
+                if (!Directory.Exists(v4playerpath32bit + downloadsfolder ))
                 {
                     Directory.CreateDirectory(v4playerpath32bit + downloadsfolder);
                 }
