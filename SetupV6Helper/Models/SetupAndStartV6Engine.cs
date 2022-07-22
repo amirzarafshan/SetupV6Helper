@@ -27,7 +27,7 @@ namespace SetupV6Helper
                     string current_version_url = V6EnginCurrentVersionURI();
                     string version_folder = V6EnginCurrentVersion();
 
-                    Report.Write("File Downloading ..... ");
+                    //Report.Write("File Downloading ..... ");
                     Console.Write("File Downloading ..... ");
                     //webClient.DownloadFileCompleted += DownloadCompleted;
                     //webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
@@ -47,8 +47,8 @@ namespace SetupV6Helper
             }
             catch (Exception e)
             {
-                Report.WriteLine("Failed to download the file!");
-                Report.WriteLine(e.ToString());
+                //Report.WriteLine("Failed to download the file!");
+                //Report.WriteLine(e.ToString());
                 Console.WriteLine("Failed to download the file!");
                 Console.WriteLine(e);
             }
