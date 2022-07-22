@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace SetupV6Helper
 {
-    public class SetupAndStartV6Engin
+    public class SetupAndStartV6Engine
     {
 
         private static readonly string v4playerpath64bit = @"c:\program files (x86)\PCM\V4Player\";
@@ -57,17 +57,17 @@ namespace SetupV6Helper
 
         private static void VerifyRXMTasks()
         {
-            Report.Write("Setting up All RXM Helper scheduled tasks ..... ");
+            //Report.Write("Setting up All RXM Helper scheduled tasks ..... ");
             Console.Write("Setting up All RXM Helper scheduled tasks ..... ");
             Thread.Sleep(10000);
             if (TaskSchedulerInfo.ScheduledTaskCreated())
             {
-                Report.WriteLine("Created");
+                //Report.WriteLine("Created");
                 Console.WriteLine("Created");
             }
             else
             {
-                Report.WriteLine("Failed");
+                //Report.WriteLine("Failed");
                 Console.WriteLine("Failed.");
             }
         }
@@ -93,7 +93,7 @@ namespace SetupV6Helper
       
             }
 
-            Report.WriteLine("Directoy to download : " + ReadFileNamePathLocally(""));
+            //Report.WriteLine("Directoy to download : " + ReadFileNamePathLocally(""));
             Console.WriteLine("Directoy to download : " + ReadFileNamePathLocally(""));
         }
 
@@ -157,7 +157,7 @@ namespace SetupV6Helper
                 return true;
             }
 
-            Report.WriteLine(filename + " was not downloaded!");
+            //Report.WriteLine(filename + " was not downloaded!");
             Console.WriteLine("{0} was not downloaded!", filename);
             return false;
         }

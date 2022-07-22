@@ -11,7 +11,7 @@ namespace SetupV6Helper
             if (args.Length > 0 && args[0].Equals("-deva1"))
             {
                 Console.WriteLine("Connecting to deva1");
-                SetupAndStartV6Engin.Run(server_endpoint);
+                SetupAndStartV6Engine.Run(server_endpoint);
             }
             else if (args.Length > 0 && !args[0].Equals("-deva1"))
             {
@@ -22,7 +22,7 @@ namespace SetupV6Helper
             else if (args.Length == 0)
             {
                 Console.WriteLine("Connecting to a1");
-                SetupAndStartV6Engin.Run("");
+                SetupAndStartV6Engine.Run("");
             }
 
             else

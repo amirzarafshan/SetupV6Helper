@@ -9,12 +9,12 @@ namespace SetupV6Helper
     {
         public static void ExtractZipfile(string source, string destination)
         {
-            Report.Write("File Unzipping ..... ");
+            //Report.Write("File Unzipping ..... ");
             Console.Write("File Unzipping ..... ");
             ZipFile.ExtractToDirectory(source, destination);
             if (!IsFileLocked("dist.zip"))
             {
-                Report.WriteLine("Unzipped");
+                //Report.WriteLine("Unzipped");
                 Console.WriteLine("Unzipped");
             }
         }

@@ -26,7 +26,7 @@ namespace SetupV6Helper
             }
             catch (WebException)
             {
-                Report.WriteLine("URL not found: " + v6_macro_version);
+                //Report.WriteLine("URL not found: " + v6_macro_version);
                 Console.WriteLine("URL not found: " + v6_macro_version);
                 Environment.Exit(0);
                 return null;
@@ -68,16 +68,16 @@ namespace SetupV6Helper
             }
             catch (WebException)
             {
-                Report.WriteLine("URL not found: " + dist_file_md5_path);
+                //Report.WriteLine("URL not found: " + dist_file_md5_path);
                 Console.WriteLine("URL not found: " + dist_file_md5_path);
                 Environment.Exit(0);
                 return null;
             }       
         }
 
-        public static RXMEngin GetInfo()
+        public static RXMEngine GetInfo()
         {
-            return new RXMEngin
+            return new RXMEngine
             (
                 CurrentVersion = ReadV6MacroVersion(),
                 MD5Hash_CurrentVersion = ReadMD5hashRemoteDistFile(CurrentVersion)
