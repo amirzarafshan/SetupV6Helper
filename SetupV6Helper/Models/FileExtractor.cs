@@ -8,13 +8,12 @@ namespace SetupV6Helper
     public sealed class FileExtractor
     {
         public static void ExtractZipfile(string source, string destination)
-        {
-            //Report.Write("File Unzipping ..... ");
+        {       
             Console.Write("File Unzipping ..... ");
             ZipFile.ExtractToDirectory(source, destination);
             if (!IsFileLocked("dist.zip"))
             {
-                //Report.WriteLine("Unzipped");
+
                 Console.WriteLine("Unzipped");
             }
         }

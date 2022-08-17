@@ -27,16 +27,13 @@ namespace SetupV6Helper
                     string current_version_url = V6EnginCurrentVersionURI();
                     string version_folder = V6EnginCurrentVersion();
 
-                    //Report.Write("File Downloading ..... ");
                     Console.Write("File Downloading ..... ");
                     //webClient.DownloadFileCompleted += DownloadCompleted;
                     //webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
                     if (VersionNotExist(version_folder + ".zip")) 
                     {
                         webClient.DownloadFile(new Uri(current_version_url), ReadFileNamePathLocally(version_folder + ".zip"));
-                        Report.WriteLine("Downloaded");
                         Console.WriteLine("Downloaded");
-
                     }
                     else
                     {
@@ -47,8 +44,6 @@ namespace SetupV6Helper
             }
             catch (Exception e)
             {
-                //Report.WriteLine("Failed to download the file!");
-                //Report.WriteLine(e.ToString());
                 Console.WriteLine("Failed to download the file!");
                 Console.WriteLine(e);
             }
@@ -57,17 +52,14 @@ namespace SetupV6Helper
 
         private static void VerifyRXMTasks()
         {
-            //Report.Write("Setting up All RXM Helper scheduled tasks ..... ");
             Console.Write("Setting up All RXM Helper scheduled tasks ..... ");
             Thread.Sleep(10000);
             if (TaskSchedulerInfo.ScheduledTaskCreated())
             {
-                //Report.WriteLine("Created");
                 Console.WriteLine("Created");
             }
             else
             {
-                //Report.WriteLine("Failed");
                 Console.WriteLine("Failed.");
             }
         }
@@ -92,8 +84,6 @@ namespace SetupV6Helper
                 }
       
             }
-
-            //Report.WriteLine("Directoy to download : " + ReadFileNamePathLocally(""));
             Console.WriteLine("Directoy to download : " + ReadFileNamePathLocally(""));
         }
 
@@ -157,7 +147,6 @@ namespace SetupV6Helper
                 return true;
             }
 
-            //Report.WriteLine(filename + " was not downloaded!");
             Console.WriteLine("{0} was not downloaded!", filename);
             return false;
         }

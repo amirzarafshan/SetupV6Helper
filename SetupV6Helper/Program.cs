@@ -8,6 +8,10 @@ namespace SetupV6Helper
 
         public static void Main(string[] args)
         {
+            DateTime dt = DateTime.Now;
+            Console.WriteLine("Installing V6Helper: {0}", dt);
+            Console.WriteLine("==========================================");
+
             if (args.Length > 0 && args[0].Equals("-deva1"))
             {
                 Console.WriteLine("Connecting to deva1");
