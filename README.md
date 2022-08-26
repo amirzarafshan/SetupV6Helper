@@ -9,6 +9,8 @@ Repository for all RXM scripts
 ==============================================================================
 C:\Users\RXM\Documents\setupv6helper>setupv6helper -deva1
 
+Installing V6Helper: 8/26/2022 10:44:27 AM
+==========================================
 1.Connecting to deva1
 2.Directoy to download : c:\program files (x86)\PCM\V4Player\bin\22.6.23.779\
 3.File Downloading ..... Downloaded
