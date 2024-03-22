@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
+
 
 namespace SetupV6Helper
 {
@@ -39,7 +39,6 @@ namespace SetupV6Helper
                     
                     if (killprocess == true)
                         process.Kill();
-                    Thread.Sleep(7000);
                     return true;
                 }
             return false;
