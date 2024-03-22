@@ -8,27 +8,35 @@ namespace SetupV6Helper
     public sealed class RXMEnginInfo
     {
         private static readonly string playerpathfolder = "https://web.rxmusic.com/apps/player/";
-        private static readonly string v6_macro_version = "https://web.rxmusic.com/apps/player/v6_macro_version.txt";
+        //private static readonly string v6_macro_version = "https://web.rxmusic.com/apps/player/v6_macro_version.txt";
 
 
         public static string CurrentVersion { get; set; }
         public static string MD5Hash_CurrentVersion { get; set; }
 
         public static string ReadV6MacroVersion()
-        {
-            try
-            {
-                WebClient webClient = new WebClient();
-                Stream stream = webClient.OpenRead(v6_macro_version);
-                StreamReader reader = new StreamReader(stream);
-                return reader.ReadToEnd().Trim();
-            }
-            catch (WebException)
-            {
-                Console.WriteLine("URL not found: " + v6_macro_version);
-                Environment.Exit(0);
-                return null;
-            }
+        { 
+              string v6_macro_version = Program.v6_version.ToString();
+    
+              try
+              {
+                    if (!Uri.IsWellFormedUriString(v6_macro_version, UriKind.Absolute))
+                    {
+                        return v6_macro_version.ToString();    
+                    }
+
+                    WebClient webClient = new WebClient();
+                    Stream stream = webClient.OpenRead(v6_macro_version);
+                    StreamReader reader = new StreamReader(stream);
+                    return reader.ReadToEnd().Trim();
+               }
+
+              catch (WebException)
+              {
+                    Console.WriteLine("URL not found: " + v6_macro_version);
+                    Environment.Exit(0);
+                    return null;
+              }
         }
 
         public static string ReadV6CurentVersionURL(string version)
