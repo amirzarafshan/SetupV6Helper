@@ -4,6 +4,7 @@
 Repository for all RXM scripts
 1) Read v6_macro_version.txt for the current version
 2) Download the [x.x.x.x]\dist.zip to folder V4Player\downloads\[x.x.x.x]
+<<<<<<< HEAD
 3) Unzip the dist.zip file
 4) Verify whether both RXMHelperStartup & Monitor are setup in task scheduler
 ==============================================================================
@@ -11,6 +12,13 @@ C:\Users\RXM\Documents\setupv6helper>setupv6helper -deva1
 
 Installing V6Helper: 8/26/2022 10:44:27 AM
 ==========================================
+=======
+3) Unzip the dist.zip file to bin folder
+4) Verify whether both RXMHelperStartup & Monitor are setup in task scheduler
+==============================================================================
+C:\Users\RXM\Documents\setupv6helper>setupv6helper -deva1
+0.Installing V6Helper: [MM/DD/YYYY hh:mm:ss PM/AM]
+>>>>>>> c6528243e18af74788f25a2945596a86c4bb80b3
 1.Connecting to deva1
 2.Directoy to download : c:\program files (x86)\PCM\V4Player\downloads\22.6.23.779\
 3.File Downloading ..... Downloaded
